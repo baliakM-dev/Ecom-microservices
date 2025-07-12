@@ -1,0 +1,43 @@
+spring:
+  datasource:
+    #    For local PostgreSQL database, use the following configuration: docer-compose.yml
+    url: jdbc:postgresql://localhost:5432/product
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+  rabbitmq: # For RabbitMQ configuration
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  #    For NEON database, use the following configuration:
+  #    url: jdbc:postgresql://ep-curly-star-aecl72e3-pooler.c-2.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+  #    username: neondb_owner
+  #    password: npg_MnFZKB3y6fxp
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+#  h2:
+#    console:
+#      enabled: true
+#  datasource:
+#    url: jdbc:h2:mem:test
+#  jpa:
+#    hibernate:
+#      ddl-auto: create
+#    show-sql: true
+
+server:
+  port: 8081
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+app:
+  message: "HELLO from product-service"

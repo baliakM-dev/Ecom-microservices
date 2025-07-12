@@ -1,0 +1,40 @@
+spring:
+  data:
+    #    For Neon database, use the following configuration:
+    mongodb:
+      uri: ${MONGO_URI}
+  rabbitmq: # For RabbitMQ configuration
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+#    For local PostgreSQL database, use the following configuration: docer-compose.yml
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/userdb
+#    username: baliakM_dev
+#    password: stonehenge11++
+#  jpa:
+#    database: POSTGRESQL
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: update
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+#  h2:
+#    console:
+#      enabled: true
+#  datasource:
+#    url: jdbc:h2:mem:test
+#  jpa:
+#    hibernate:
+#      ddl-auto: create
+#    show-sql: true
+
+server:
+  port: 8082
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
