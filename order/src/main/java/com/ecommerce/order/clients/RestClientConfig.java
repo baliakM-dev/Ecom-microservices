@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.web.client.RestClient;
 
+import java.util.Objects;
+
 @Configuration
 public class RestClientConfig {
 
@@ -38,7 +40,7 @@ public class RestClientConfig {
         return ((request, body, execution) -> {
             if (tracer != null && propagator != null
                     && tracer.currentSpan() != null) {
-                propagator.inject(tracer.currentTraceContext().context(),
+                propagator.inject(Objects.requireNonNull(tracer.currentTraceContext().context()),
                         request.getHeaders(),
                         (carrier, key, value) -> carrier.add(key, value));
             }
